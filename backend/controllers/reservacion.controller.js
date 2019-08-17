@@ -2,9 +2,15 @@ const Reservacion = require('../models/reservacion');
 
 const reservacionCtrl = {};
 
-reservacionCtrl.getReservaciones = async (req, res, next) => {
-    const reservaciones = await Reservacion.find();
+//eservacionCtrl.getReservaciones = async (req, res, next) => {
+/* const reservaciones = await Reservacion.find();
     res.json(reservaciones);
+};*/
+
+reservacionCtrl.getReservaciones = async (req, res, next) => {
+    const reservaciones = await Reservacion.find().sort({$natural:-1}).limit(1);
+    res.json(reservaciones);
+    console.log('Ultima Reservacion' + reservaciones)
 };
 
 reservacionCtrl.createReservacion = async (req, res, next) => {

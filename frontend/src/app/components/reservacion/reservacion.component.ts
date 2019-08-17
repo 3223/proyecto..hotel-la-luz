@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReservacionService } from '../../services/reservacion.service';
 import { NgForm } from '@angular/forms';
 import { Reservacion } from '../../models/reservacion';
-
+import { Habitaciontipo } from '../../models/habitaciontipo';
 declare var M: any;
 
 @Component({
@@ -13,11 +13,28 @@ declare var M: any;
   providers: [ ReservacionService ]
 })
 export class ReservacionComponent implements OnInit {
+//select: number;
 
+restaFechas = function(f1,f2)
+ {
+ var aFecha1 = f1.split('/');
+ var aFecha2 = f2.split('/');
+ var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
+ var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
+ var dif = fFecha2 - fFecha1;
+ var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+ return dias;
+ }
+Habitaciontipo: Habitaciontipo[] = [ 
+  {id: 1, name: 'Habitacion Doble'},
+  {id: 2, name: 'Habitacion King-size'},
+  {id: 3, name: 'Habitacion Suite'}
+]
   constructor(private reservacionService: ReservacionService) { }
 
   ngOnInit() {
     this.getReservaciones();
+   // this.select=0;
   }
 
   addReservacion(form?: NgForm) {
@@ -68,5 +85,8 @@ export class ReservacionComponent implements OnInit {
       this.reservacionService.selectedReservacion = new Reservacion();
     }
   }
+//  getTotalAmount() {
+ //   return this.reservacionService.reservaciones.map(i => i.NumHab).reduce((acc, value) => ñacc + value, 0);
+ // }
 }
 

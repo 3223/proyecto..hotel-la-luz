@@ -16,6 +16,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { PaquetesComponent } from './components/paquetes/paquetes.component';
 import { OfertasComponent } from './components/ofertas/ofertas.component';
 import { ReservacionComponent } from './components/reservacion/reservacion.component';
+import { ReservacionusuarioComponent } from './components/reservacion/reservacionusuario/reservacionusuario.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ReservacionComponent } from './components/reservacion/reservacion.compo
     UsuarioComponent,
     PaquetesComponent,
     OfertasComponent,
-    ReservacionComponent
+    ReservacionComponent,
+    ReservacionusuarioComponent
   ],
   imports: [
     BrowserModule,
